@@ -7,7 +7,7 @@ const navLinkClass =
   "nav-link relative inline-flex items-center gap-2 py-0.5 text-sm font-medium text-slate-600 transition-transform duration-300 hover:-translate-y-0.5 hover:text-slate-900";
 
 const brandClass =
-  "nav-link relative inline-flex items-center gap-2 py-0.5 transition-transform duration-300 hover:-translate-y-0.5 brand-script text-2xl text-slate-800";
+  "nav-link relative inline-flex items-center gap-2 mb-1 transition-transform duration-300 hover:-translate-y-0.5 brand-script text-xl text-slate-800";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <header className="fixed left-0 right-0 top-4 z-50 px-4 md:px-0">
       {/* Top Bar */}
-      <nav className="mx-auto flex w-full max-w-[min(580px,100%)] items-center justify-between rounded-full border border-white/60 bg-white/70 px-5 py-2 md:px-6 md:py-1.5 shadow-[0_2px_16px_rgba(0,0,0,0.06)] backdrop-blur-md transition-all">
+      <nav className="mx-auto flex w-full max-w-[min(580px,100%)] items-center justify-between rounded-lg border border-black/20 bg-white px-5 py-2 md:px-6 md:py-1.5 shadow-[0_2px_16px_rgba(0,0,0,0.06)] backdrop-blur-md transition-all">
         
         {/* Desktop Layout */}
         <div className="hidden w-full items-center justify-between md:flex">
@@ -32,7 +32,7 @@ export default function Navbar() {
             About
           </a>
           <a href="#resume" className={navLinkClass}>
-            <Star size={14} /> Resume
+            <Sparkle size={14} /> Resume
           </a>
         </div>
 
@@ -53,7 +53,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="mx-auto mt-2 flex w-full max-w-[min(580px,100%)] flex-col gap-4 rounded-2xl border border-white/60 bg-white/80 p-5 shadow-lg backdrop-blur-md md:hidden animate-fadeIn">
+        <div className="mx-auto mt-2 flex w-full max-w-[min(580px,100%)] flex-col gap-4 rounded-lg border border-black/20 bg-white p-5 shadow-lg backdrop-blur-md md:hidden animate-fadeIn">
           <a href="#work" onClick={() => setIsOpen(false)} className={navLinkClass}>
             Work
           </a>
@@ -65,7 +65,7 @@ export default function Navbar() {
             <Sparkle size={14} fill="currentColor" /> Let&apos;s Connect
           </a>
           <a href="#resume" onClick={() => setIsOpen(false)} className={navLinkClass}>
-            <Star size={14} /> Resume
+            <Sparkle size={14} /> Resume
           </a>
         </div>
       )}

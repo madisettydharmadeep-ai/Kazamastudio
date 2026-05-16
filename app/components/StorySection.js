@@ -13,13 +13,13 @@ export default function StorySection() {
       className="mx-auto max-w-6xl px-5 py-20"
     >
       {/* heading */}
-      <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div className="mb-10 sm:mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div className="max-w-2xl">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-blue-700">
             A bit about me
           </p>
 
-          <h2 className="serif-display mt-3 text-5xl leading-[0.95] text-slate-950 sm:text-6xl">
+          <h2 className="serif-display mt-3 text-3xl sm:text-5xl leading-[0.95] text-slate-950 sm:text-6xl">
             AI models, cozy code,
             <br />
             and hometown peace.
@@ -36,10 +36,10 @@ export default function StorySection() {
         {STORY_CARDS.map((card, index) => (
           <article
             key={card.title}
-            className="group relative flex flex-col overflow-hidden rounded-[30px] border border-slate-200/70 bg-[#fcfcfc] p-5 shadow-[0_10px_40px_rgba(15,23,42,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]"
+            className="group relative flex flex-col overflow-hidden rounded-lg border border-slate-200/70 bg-[#fcfcfc] p-5 shadow-[0_10px_40px_rgba(15,23,42,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]"
           >
             {/* image */}
-            <div className="relative overflow-hidden rounded-[24px]">
+            <div className="relative overflow-hidden rounded-lg">
               <img
                 src={aestheticImages[index]}
                 alt=""

@@ -57,7 +57,6 @@ export default function KazamaStudio() {
         <HeroSection />
         <StorySection />
         <WorkSection />
-        <SideWorks />
         <ContactFooter />
       </div>
     </main>

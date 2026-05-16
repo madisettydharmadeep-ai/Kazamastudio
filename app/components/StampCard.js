@@ -9,7 +9,7 @@ export default function ProjectCard({ project, index }) {
       className="group block h-full"
     >
       <article
-        className="relative flex h-full flex-col overflow-hidden rounded-[32px] border border-slate-200/60 bg-white transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(15,23,42,0.08)]"
+        className="relative flex h-full flex-col overflow-hidden rounded-lg border border-slate-200/60 bg-white transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(15,23,42,0.08)]"
       >
         {/* IMAGE */}
         <div className="relative aspect-[16/11] overflow-hidden">

@@ -1,8 +1,8 @@
 export const WORKS = [
   {
     title: "Gentle Ferry",
-    meta: "Kazama Studio | 4 Weeks | 2026",
-    desc: "A soft journal shaped around the quieter side of software: tiny reflections, tactile details, and calm daily rituals.",
+    meta: "Kazama Studio | Personal Project | 2026",
+    desc: "A soft journal shaped around the quieter side of software. Built as a Kazama Studio passion project for people to enjoy calm daily rituals.",
     status: "Live Product",
     image:
       "https://i.pinimg.com/1200x/1a/2a/bd/1a2abdd5250a5b4b85f82b71f09cb4ca.jpg",
@@ -11,9 +11,9 @@ export const WORKS = [
   },
   {
     title: "MyScrapbook",
-    meta: "Personal | 1 Month | 2026",
-    desc: "A nostalgic maker for saving memories with the handmade feeling I chase in my night-time Kazama Studio experiments.",
-    status: "Featured",
+    meta: "Kazama Studio | Personal Project | 2026",
+    desc: "A nostalgic tool for saving memories with a handmade feel. A free-to-use Kazama Studio experiment created for everyone to craft their stories.",
+    status: "Live Product",
     image:
       "https://i.pinimg.com/736x/b5/7b/a3/b57ba3256ef17e43992667b13aa2e5fe.jpg",
     url: "https://myscrapbook.thestorybits.com/",
