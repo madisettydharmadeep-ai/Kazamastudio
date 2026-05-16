@@ -11,37 +11,26 @@ const NAV_LINKS = [
 
 const SOCIAL_LINKS = [
   {
-    id: "behance",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14h-8.027c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-14.967h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zm-3.466-8.988h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.016h3.341c3.055 0 2.868-3.016.05-3.016z" />
-      </svg>
-    ),
-    href: "#",
-    label: "Behance",
-  },
-  {
-    id: "linkedin",
+    id: "instagram",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-        <rect x="2" y="9" width="4" height="12"></rect>
-        <circle cx="4" cy="4" r="2"></circle>
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
       </svg>
     ),
-    href: "#",
-    label: "LinkedIn",
+    href: "https://www.instagram.com/kazama_studio/",
+    label: "Instagram",
   },
   {
-    id: "dribbble",
+    id: "twitter",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
       </svg>
     ),
-    href: "#",
-    label: "Dribbble",
+    href: "https://x.com/Bot_code_2003",
+    label: "X (Twitter)",
   }
 ];
 
@@ -50,7 +39,7 @@ export default function ContactFooter() {
     <footer
       id="contact"
       // YOUR EXACT STYLES - UNTOUCHED
-      className="relative max-w-[95%] mx-auto m-10 rounded-lg text-center flex flex-col items-center justify-end overflow-hidden min-h-[500px]"
+      className="relative max-w-full sm:max-w-[98%] mx-auto mt-10 sm:m-10 sm:rounded-lg text-center flex flex-col items-center justify-end overflow-hidden min-h-[500px]"
       style={{
         backgroundImage: 'url("https://i.pinimg.com/1200x/e2/50/2a/e2502af23214be0c28acc9bd7c627d20.jpg")',
         backgroundSize: 'cover',
@@ -67,11 +56,11 @@ export default function ContactFooter() {
             Let's build something beautiful.
           </h2>
           <a 
-            href="mailto:hello@kazama.studio" 
+            href="mailto:futurepiratekingxx@gmail.com" 
             className="group flex items-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]"
           >
             <Mail size={20} className="text-slate-700" />
-            hello@kazama.studio
+            futurepiratekingxx@gmail.com
             <ArrowUpRight size={20} className="text-slate-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>
         </div>

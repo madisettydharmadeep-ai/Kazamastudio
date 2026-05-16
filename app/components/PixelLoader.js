@@ -27,7 +27,7 @@ export default function PixelLoader() {
             key={image}
             src={image}
             alt=""
-            className={`absolute rounded-[28px] object-cover shadow-[0_20px_50px_rgba(15,23,42,0.12)] opacity-0 animate-[floatIn_1.4s_ease_forwards] ${index === 0 ? "left-[10%] top-[10%] h-40 w-40 rotate-[-8deg]" : index === 1 ? "right-[10%] top-[10%] h-40 w-40 rotate-[6deg]" : index === 2 ? "bottom-[10%] left-[10%] h-40 w-40 rotate-[7deg]" : "bottom-[10%] right-[10%] h-40 w-40 rotate-[-6deg]"}`}
+            className={`absolute rounded-[28px] object-cover shadow-[0_20px_50px_rgba(15,23,42,0.12)] opacity-0 animate-[floatIn_1.4s_ease_forwards] ${index === 0 ? "left-[10%] top-[10%] h-24 w-24  sm:h-40 sm:w-40 rotate-[-8deg]" : index === 1 ? "right-[10%] top-[10%] h-24 w-24 sm:h-40 sm:w-40 rotate-[6deg]" : index === 2 ? "bottom-[10%] left-[10%] h-24 w-24 sm:h-40 sm:w-40 rotate-[7deg]" : "bottom-[10%] right-[10%] h-24 w-24 sm:h-40 sm:w-40 rotate-[-6deg]"}`}
             style={{
               animationDelay: `${index * 500}ms`,
             }}

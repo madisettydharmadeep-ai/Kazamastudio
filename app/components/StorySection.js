@@ -10,7 +10,7 @@ export default function StorySection() {
   return (
     <section
       id="story"
-      className="mx-auto max-w-6xl px-5 py-20"
+      className="mx-auto max-w-6xl px-5 py-0 mb-20 sm:mb-0 sm:py-20"
     >
       {/* heading */}
       <div className="mb-10 sm:mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
