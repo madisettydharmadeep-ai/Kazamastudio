@@ -1,26 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Whimsical Journal — Design Tokens
+ * ─────────────────────────────────
+ * A cozy warm palette inspired by cream paper,
+ * soft blush, and golden afternoon light.
+ */
+
+@theme {
+  /* Typography — single font throughout */
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+
+  /* Background */
+  --color-cream: #fffbf7; /* page bg */
+  --color-card: #ffffff; /* card bg */
+  --color-muted: #f5f0ea; /* subtle bg accents */
+
+  /* Text */
+  --color-ink: #2d2926; /* primary text */
+  --color-ink-soft: #6b6560; /* secondary text */
+  --color-ink-faint: #a8a29e; /* placeholder / tertiary */
+
+  /* Accent — cozy blush pink */
+  --color-blush: #e8837c; /* primary accent */
+  --color-blush-light: #fff1ef; /* accent bg tint */
+  --color-blush-hover: #d6706a; /* accent hover */
+
+  /* Supporting warm tones */
+  --color-honey: #f2c94c; /* yellow accent */
+  --color-honey-light: #fff9e6; /* yellow bg tint */
+  --color-sage: #7fb69e; /* green accent (calm) */
+  --color-lavender: #b4a7d6; /* purple accent (grateful) */
+
+  /* Borders */
+  --color-line: #e8e2da; /* default border */
+  --color-line-strong: #d4cdc3; /* stronger border */
+
+  /* Shadows */
+  --shadow-sm: 0 1px 4px rgba(45, 41, 38, 0.06);
+  --shadow-md: 0 4px 16px rgba(45, 41, 38, 0.08);
+  --shadow-lg: 0 8px 32px rgba(45, 41, 38, 0.1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ── Base ── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    font-family: var(--font-body);
+    background: var(--color-cream);
+    color: var(--color-ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: var(--color-blush-light);
+    color: var(--color-ink);
+  }
+
+  button:not(:disabled),
+  a[href],
+  [role="button"],
+  label[for],
+  select,
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Animations ── */
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 400ms ease-out both;
+  }
+
+  @keyframes floatIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes loader {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(300%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 99px;
+  border: 2px solid var(--color-cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blush);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
