@@ -5,7 +5,7 @@ export const WORKS = [
     desc: "A soft journal shaped around the quieter side of software. Built as a Kazama Studio passion project for people to enjoy calm daily rituals.",
     status: "Live Product",
     image:
-      "https://i.pinimg.com/1200x/1a/2a/bd/1a2abdd5250a5b4b85f82b71f09cb4ca.jpg",
+      "https://i.pinimg.com/736x/54/1b/32/541b325efc8190b4ecf80f39a53f30fb.jpg",
     url: "https://gentle-ferry.vercel.app/",
     tint: "from-sky-300 via-rose-200 to-amber-100",
   },
@@ -15,9 +15,19 @@ export const WORKS = [
     desc: "A nostalgic tool for saving memories with a handmade feel. A free-to-use Kazama Studio experiment created for everyone to craft their stories.",
     status: "Live Product",
     image:
-      "https://i.pinimg.com/736x/b5/7b/a3/b57ba3256ef17e43992667b13aa2e5fe.jpg",
+      "https://i.pinimg.com/1200x/99/99/93/9999933a9f75cf650461f4b8064df5b8.jpg",
     url: "https://myscrapbook.thestorybits.com/",
     tint: "from-blue-500 via-sky-300 to-lime-100",
+  },
+  {
+    title: "StoryBits",
+    meta: "Kazama Studio | Reading Platform | 2026",
+    desc: "Complete stories in 5–15 minutes. Built for quiet escapes during commutes, lunch breaks, or those little pauses in everyday life.",
+    status: "Live Product",
+    image:
+      "https://i.pinimg.com/1200x/0c/51/49/0c514903e32685c4734c98b92b625a8a.jpg",
+    url: "https://thestorybits.com/",
+    tint: "from-violet-300 via-fuchsia-200 to-rose-100",
   },
 ];
 

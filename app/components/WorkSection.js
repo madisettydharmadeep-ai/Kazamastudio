@@ -3,7 +3,7 @@ import StampCard from "./StampCard";
 
 export default function WorkSection() {
   // Lock it to exactly 2: The Gentle Ferry and My Scrapbook
-  const featuredWorks = WORKS.slice(0, 2);
+  const featuredWorks = WORKS.slice(0, 3);
 
   return (
     <section id="work" className="bg-[#f7f7f5] px-6">
@@ -11,14 +11,10 @@ export default function WorkSection() {
          Max-width 3xl (around 768px) is the "sweet spot" for 2 cards. 
          Any wider and they drift too far apart.
       */}
-      <div className="mx-auto max-w-6xl ">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="mx-auto py-20 max-w-6xl ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredWorks.map((project, index) => (
-            <StampCard 
-              key={project.title} 
-              project={project} 
-              index={index} 
-            />
+            <StampCard key={project.title} project={project} index={index} />
           ))}
         </div>
       </div>

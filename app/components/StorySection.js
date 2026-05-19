@@ -6,73 +6,142 @@ const aestheticImages = [
   "https://i.pinimg.com/736x/42/4d/be/424dbe3fd87e88c20738334b5a68565a.jpg",
 ];
 
+const peekAnimals = ["🐱", "🐻", "🦊"];
+
 export default function StorySection() {
   return (
     <section
       id="story"
-      className="mx-auto max-w-6xl px-5 py-0 mb-20 sm:mb-0 sm:py-20"
+      className="mx-auto max-w-6xl px-5 py-12 sm:py-20"
+      style={{ background: "#faf8f4", borderRadius: "1rem" }}
     >
+      <style>{`
+        .peek-animal {
+          position: absolute;
+          top: -28px;
+          left: 50%;
+          transform: translateX(-50%) translateY(16px);
+          font-size: 26px;
+          opacity: 0;
+          transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          pointer-events: none;
+          z-index: 10;
+          filter: drop-shadow(0 2px 4px rgba(44,36,32,0.15));
+        }
+        .story-card:hover .peek-animal {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0px);
+        }
+        .story-card {
+          position: relative;
+        }
+      `}</style>
+
       {/* heading */}
-      <div className="mb-10 sm:mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div className="max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-blue-700">
-            A bit about me
-          </p>
-
-          <h2 className="serif-display mt-3 text-3xl sm:text-5xl leading-[0.95] text-slate-950 sm:text-6xl">
-            AI models, cozy code,
-            <br />
-            and hometown peace.
-          </h2>
-        </div>
-
-        <p className="max-w-sm text-sm leading-relaxed text-slate-500">
-          I'm an AI/ML engineer who loves untangling complex algorithms by day, and crafting aesthetic, indie web projects by night.
+      <div className="mb-12">
+        <p
+          className="text-lg mb-2"
+          style={{ fontFamily: "'Caveat', cursive", color: "#b07d5c" }}
+        >
+          ✦ a bit about me
         </p>
+        <h2
+          className="text-4xl sm:text-5xl leading-tight"
+          style={{ fontFamily: "'Lora', serif", fontWeight: 400, color: "#2c2420" }}
+        >
+          AI models, cozy code,
+          <br />
+          and <em style={{ color: "#b07d5c" }}>hometown peace.</em>
+        </h2>
       </div>
 
       {/* cards */}
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-3 items-start">
         {STORY_CARDS.map((card, index) => (
           <article
             key={card.title}
-            className="group relative flex flex-col overflow-hidden rounded-lg border border-slate-200/70 bg-[#fcfcfc] p-5 shadow-[0_10px_40px_rgba(15,23,42,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]"
+            className="story-card relative flex flex-col overflow-visible rounded-xl"
+            style={{
+              background: "#fffdf9",
+              border: "1px solid #ede8df",
+              marginTop: index === 1 ? "1.5rem" : index === 2 ? "-0.5rem" : "0",
+            }}
           >
-            {/* image */}
-            <div className="relative overflow-hidden rounded-lg">
+            {/* peeking animal */}
+            <span className="peek-animal">{peekAnimals[index]}</span>
+
+            {/* image with squiggle mask */}
+            <div className="relative overflow-hidden rounded-t-xl">
               <img
                 src={aestheticImages[index]}
                 alt=""
-                className="
-                  h-52 w-full object-cover
-                  transition duration-500
-                  group-hover:scale-[1.03]
-                "
+                className="w-full object-cover"
+                style={{ height: "170px", display: "block" }}
               />
-
-              {/* soft overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
+              <svg
+                viewBox="0 0 400 20"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{
+                  position: "absolute",
+                  bottom: -1,
+                  left: 0,
+                  width: "100%",
+                }}
+              >
+                <path
+                  d="M0,10 Q50,0 100,10 T200,10 T300,10 T400,10 L400,20 L0,20 Z"
+                  fill="#fffdf9"
+                />
+              </svg>
             </div>
 
+            {/* decorative mark */}
+            <span
+              className="absolute top-3 right-4"
+              style={{
+                fontFamily: "'Caveat', cursive",
+                fontSize: "13px",
+                color: "#c9a98a",
+                opacity: 0.75,
+              }}
+            >
+              {["✧", "✦", "✶"][index]}
+            </span>
+
             {/* content */}
-            <div className="mt-5 flex flex-1 flex-col">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
+            <div className="p-5 flex flex-col flex-1">
+              <p
+                className="text-sm mb-1"
+                style={{ fontFamily: "'Caveat', cursive", color: "#b07d5c" }}
+              >
                 {card.eyebrow}
               </p>
 
-              <h3 className="serif-display mt-3 text-3xl leading-none text-slate-950">
+              <h3
+                className="text-xl leading-snug mb-3"
+                style={{
+                  fontFamily: "'Lora', serif",
+                  fontWeight: 400,
+                  color: "#2c2420",
+                }}
+              >
                 {card.title}
               </h3>
 
-              <p className="mt-4 text-sm leading-relaxed text-slate-600">
+              <p
+                className="text-sm leading-relaxed mb-4"
+                style={{ color: "#6b5d54", fontWeight: 300 }}
+              >
                 {card.copy}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mt-auto">
                 {card.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600"
+                    className="text-xs px-3 py-1 rounded-full"
+                    style={{ background: "#f0ebe2", color: "#8a6d5b" }}
                   >
                     {tag}
                   </span>

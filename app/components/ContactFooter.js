@@ -3,9 +3,10 @@ import { Mail, ArrowUpRight } from "lucide-react";
 
 // Extract data outside the component to keep JSX clean
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "#" },
   { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "#story" },
+  { label: "Currently", href: "#currently" },
   { label: "Resume", href: "#resume" },
 ];
 
@@ -51,22 +52,22 @@ export default function ContactFooter() {
       <div className="relative z-10 flex flex-col items-center w-full px-6 pb-10 pt-40 bg-gradient-to-t from-slate-950/90 via-slate-900/60 to-transparent">
         
         {/* Main CTA Section */}
-        <div className="flex flex-col items-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6 drop-shadow-md">
+        <div className="flex flex-col items-center mb-16 w-full max-w-full px-2">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-6 drop-shadow-md text-center">
             Let's build something beautiful.
           </h2>
           <a 
             href="mailto:futurepiratekingxx@gmail.com" 
-            className="group flex items-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]"
+            className="group flex items-center gap-2 sm:gap-3 bg-white text-slate-900 px-4 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-xs sm:text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)] max-w-full overflow-hidden"
           >
-            <Mail size={20} className="text-slate-700" />
-            futurepiratekingxx@gmail.com
-            <ArrowUpRight size={20} className="text-slate-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            <Mail size={16} className="text-slate-700 shrink-0" />
+            <span className="truncate">futurepiratekingxx@gmail.com</span>
+            <ArrowUpRight size={16} className="text-slate-400 shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>
         </div>
 
         {/* Navigation */}
-        <nav className="flex flex-wrap justify-center gap-8 mb-12 text-lg font-medium text-white/80">
+        <nav className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-12 text-sm sm:text-base md:text-lg font-medium text-white/80">
           {NAV_LINKS.map((link) => (
             <a 
               key={link.label} 
@@ -87,7 +88,7 @@ export default function ContactFooter() {
           <div className="flex flex-col items-center md:items-start text-white/50 text-xs sm:text-sm">
             <p>© {new Date().getFullYear()} Kazama Studio. All rights reserved.</p>
             <p className="mt-1">Powered by caffeine and curiosity.</p>
-            <p className="mt-2 text-white/40 italic text-center md:text-left max-w-3xl">
+            <p className="mt-2 text-white/40 italic text-center md:text-left max-w-3xl text-[10px] sm:text-xs">
               * Disclaimer: Images and illustrations used in this portfolio are sourced from Pinterest for demonstration purposes and do not belong to me.
             </p>
           </div>

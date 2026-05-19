@@ -9,6 +9,10 @@ import PortfolioStyles from "./components/PortfolioStyles";
 import SideWorks from "./components/SideWorks";
 import StorySection from "./components/StorySection";
 import WorkSection from "./components/WorkSection";
+import CurrentlySection from "./components/CurrentlySection";
+import FortuneCookie from "./components/FortuneCookie";
+import StayedSection from "./components/StayedSection";
+import AmbientQuoteSection from "./components/AmbientQuoteSection";
 
 export default function KazamaStudio() {
   const [showLoader, setShowLoader] = useState(true);
@@ -56,7 +60,11 @@ export default function KazamaStudio() {
       >
         <HeroSection />
         <StorySection />
+        <CurrentlySection />
+        {/* <AmbientQuoteSection /> */}
         <WorkSection />
+        <FortuneCookie />
+        {/* <StayedSection /> */}
         <ContactFooter />
       </div>
     </main>
