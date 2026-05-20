@@ -140,7 +140,7 @@ export default function HeroSection() {
         <FloatingCard
           image="https://i.pinimg.com/736x/a0/7b/d1/a07bd1befcf661520f4902f471359982.jpg"
           initialX="78%"
-          initialY="70%"
+          initialY="80%"
           rotateDeg={-8}
           label="current status"
         >
@@ -149,8 +149,8 @@ export default function HeroSection() {
 
         <FloatingCard
           image="https://i.pinimg.com/736x/24/2c/1a/242c1a960184aff25b7d367399b24294.jpg"
-          initialX="-5%"
-          initialY="15%"
+          initialX="-2%"
+          initialY="10%"
           rotateDeg={10}
           label="now playing"
         >
@@ -159,7 +159,7 @@ export default function HeroSection() {
 
         <FloatingCard
           image="https://i.pinimg.com/736x/58/e5/de/58e5decaf69b3f073fc667b24b0bd939.jpg"
-          initialX="90%"
+          initialX="80%"
           initialY="12%"
           rotateDeg={-5}
           label="origin"
@@ -170,7 +170,7 @@ export default function HeroSection() {
         <FloatingCard
           image="https://i.pinimg.com/736x/41/85/67/4185673ca1ac9363b65adb9c0c92cf3f.jpg"
           initialX="2%"
-          initialY="68%"
+          initialY="82%"
           rotateDeg={6}
           label="slow life"
         >
