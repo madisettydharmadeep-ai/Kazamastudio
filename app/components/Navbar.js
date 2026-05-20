@@ -25,7 +25,7 @@ export default function Navbar() {
         {/* Desktop Layout */}
         <div className="hidden w-full items-center justify-between md:flex">
           <a href="#contact" className={navLinkClass}>
-            <Sparkle size={14} fill="currentColor" /> Let&apos;s Connect
+            <Sparkle size={14} fill="currentColor" /> Let's Connect
           </a>
           <a href="#work" className={navLinkClass}>
             Work
@@ -37,7 +37,7 @@ export default function Navbar() {
             About
           </a>
           <button type="button" onClick={openMessage} className={navLinkClass}>
-            <MessageCircle size={14} /> Message
+            <Sparkle size={14} /> Goal
           </button>
         </div>
 
@@ -86,10 +86,10 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             className={navLinkClass}
           >
-            <Sparkle size={14} fill="currentColor" /> Let&apos;s Connect
+            <Sparkle size={14} fill="currentColor" /> Let's Connect
           </a>
           <button type="button" onClick={openMessage} className={navLinkClass}>
-            <MessageCircle size={14} /> Message
+            <Sparkle size={14} /> Goal
           </button>
         </div>
       )}
@@ -116,7 +116,11 @@ export default function Navbar() {
             </button>
 
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#e8e2da] bg-white px-3 py-1 text-xs font-medium uppercase tracking-wide text-[#6b6560] shadow-sm">
-              <Sparkle size={13} className="text-[#e8837c]" fill="currentColor" />
+              <Sparkle
+                size={13}
+                className="text-[#e8837c]"
+                fill="currentColor"
+              />
               Slow and steady
             </div>
 

@@ -431,7 +431,7 @@ export default function FortuneSection() {
   };
 
   return (
-    <section className="flex w-full items-center justify-center p-4 sm:px-8 md:px-12">
+    <section className="flex w-full items-center justify-center sm:px-8 md:px-12 sm:py-24">
       {/* Container */}
       <div className="relative mx-auto flex w-full max-w-6xl flex-col overflow-hidden rounded-lg bg-[#fafaf8] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] ring-1 ring-black/[0.03] md:flex-row md:min-h-[460px]">
         {/* Subtle grain texture overlay */}
