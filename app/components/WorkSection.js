@@ -74,23 +74,50 @@ export default function WorkSection() {
       className="relative overflow-hidden px-6 py-24 bg-[#faf8f4]"
     >
       <style>{`
-        .projects-wrapper {
-          cursor: none;
+        /* Only apply custom hidden cursor styles on devices that support hovering */
+        @media (hover: hover) {
+          .projects-wrapper {
+            cursor: none;
+          }
+          .project-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 40px 80px rgba(44, 36, 32, 0.08), 0 12px 32px rgba(44, 36, 32, 0.04);
+            border-color: #d9cab9;
+          }
+          .project-card:hover .project-image {
+            transform: scale(1.06);
+            filter: saturate(1.03) brightness(0.9);
+          }
+          .content-reveal-tray {
+            transform: translate3d(0, 68px, 0);
+          }
+          .project-card:hover .content-reveal-tray {
+            transform: translate3d(0, 0, 0);
+          }
+          .reveal-body-segment {
+            opacity: 0;
+            transform: translate3d(0, 15px, 0);
+          }
+          .project-card:hover .reveal-body-segment {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+          .project-card:hover .hover-arrow-btn {
+            transform: scale(1.03);
+            background-color: #ffffff;
+            color: #1e1814;
+          }
         }
+
         .project-card {
           position: relative;
           overflow: hidden;
           border-radius: 24px;
           background: #fffdfa;
           border: 1px solid #e8dfd3;
-          height: 440px; /* Secure uniform canvas height bounds */
+          height: 440px;
           transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease;
           transform-style: preserve-3d;
-        }
-        .project-card:hover {
-          transform: translateY(-10px) scale(1.01);
-          box-shadow: 0 40px 80px rgba(44, 36, 32, 0.08), 0 12px 32px rgba(44, 36, 32, 0.04);
-          border-color: #d9cab9;
         }
         .project-image-container {
           position: absolute;
@@ -101,10 +128,6 @@ export default function WorkSection() {
         }
         .project-image {
           transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
-        }
-        .project-card:hover .project-image {
-          transform: scale(1.06);
-          filter: saturate(1.03) brightness(0.9);
         }
         .grain {
           position: absolute;
@@ -118,41 +141,27 @@ export default function WorkSection() {
           pointer-events: none;
           z-index: 2;
         }
-        /* Reveal Tray animation engine layout components */
+        
+        /* Mobile-first baseline styles: Everything fully visible and resting in its final spot */
         .content-reveal-tray {
           position: absolute;
           inset: 0;
           display: flex;
-          flex-col: items-end;
           justify-content: flex-end;
           flex-direction: column;
           padding: 24px;
-          background: linear-gradient(to top, rgba(18, 13, 10, 0.92) 0%, rgba(18, 13, 10, 0.4) 50%, transparent 100%);
+          background: linear-gradient(to top, rgba(18, 13, 10, 0.95) 0%, rgba(18, 13, 10, 0.5) 60%, transparent 100%);
           z-index: 10;
-          transform: translate3d(0, 68px, 0); /* Holds title in view at baseline, hides body */
           transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .project-card:hover .content-reveal-tray {
-          transform: translate3d(0, 0, 0);
-        }
         .reveal-body-segment {
-          opacity: 0;
-          transform: translate3d(0, 15px, 0);
           transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
           transition-delay: 0.02s;
-        }
-        .project-card:hover .reveal-body-segment {
-          opacity: 1;
-          transform: translate3d(0, 0, 0);
         }
         .hover-arrow-btn {
           transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
         }
-        .project-card:hover .hover-arrow-btn {
-          transform: scale(1.03);
-          background-color: #ffffff;
-          color: #1e1814;
-        }
+        
         .cursor-box {
           position: fixed;
           top: 0;
@@ -194,7 +203,7 @@ export default function WorkSection() {
         ? createPortal(
             <div
               ref={floatingRef}
-              className="cursor-box"
+              className="cursor-box hidden md:block" /* Hidden on mobile screen views entirely */
               style={{
                 opacity: hasHover ? 1 : 0,
                 transition: "opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -259,7 +268,8 @@ export default function WorkSection() {
         </div>
 
         {/* EDGE-TO-EDGE PROJECT CANVAS GRID */}
-        <div className="projects-wrapper grid grid-cols-1 gap-7 md:grid-cols-3">
+        {/* Added gap-12 on mobile so elements have breathing room, returns to tidy gap-7 on desktop grids */}
+        <div className="projects-wrapper grid grid-cols-1 gap-12 md:gap-7 md:grid-cols-3">
           {WORKS.slice(0, 3).map((project, index) => (
             <a
               key={project.title}
@@ -325,6 +335,7 @@ export default function WorkSection() {
                     <span className="text-[10px] uppercase tracking-[0.22em] text-white/50 font-semibold">
                       Workspace
                     </span>
+                    {/* Standard look on mobile, animations unlock inside desktop `@media (hover: hover)` rules */}
                     <div className="hover-arrow-btn flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#1e1814]">
                       <span>Open</span>
                       <ArrowUpRight size={13} strokeWidth={2.5} />

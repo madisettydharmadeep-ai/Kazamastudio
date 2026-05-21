@@ -57,66 +57,74 @@ export default function CurrentlyCozy() {
           overflow: hidden;
         }
 
-        .cozy-card:hover {
-          box-shadow:
-            0 30px 60px rgba(60,40,20,0.14),
-            0 10px 25px rgba(60,40,20,0.08);
+        /* Desktop interactions wrapped safely inside an explicit hover media query rule */
+        @media (hover: hover) {
+          .cozy-card:hover {
+            box-shadow:
+              0 30px 60px rgba(60,40,20,0.14),
+              0 10px 25px rgba(60,40,20,0.08);
+          }
+
+          .cozy-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+              linear-gradient(
+                120deg,
+                transparent 20%,
+                rgba(255,255,255,0.45) 50%,
+                transparent 80%
+              );
+            transform: translateX(-120%);
+            transition: transform 1s ease;
+            z-index: 20;
+            pointer-events: none;
+          }
+
+          .cozy-card:hover::before {
+            transform: translateX(120%);
+          }
+
+          .cozy-card:hover .image-layer {
+            transform: scale(1.08);
+            filter: saturate(1.1);
+          }
+
+          .cozy-card:hover .tape {
+            transform:
+              translateX(-50%)
+              rotate(-2deg)
+              scale(1.04);
+          }
+
+          /* Hide notes by default on desktop, then pull them up clean on active card hover */
+          .secret-note {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+
+          .cozy-card:hover .secret-note {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
-        .cozy-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background:
-            linear-gradient(
-              120deg,
-              transparent 20%,
-              rgba(255,255,255,0.45) 50%,
-              transparent 80%
-            );
-          transform: translateX(-120%);
-          transition: transform 1s ease;
-          z-index: 20;
-          pointer-events: none;
-        }
-
-        .cozy-card:hover::before {
-          transform: translateX(120%);
-        }
-
+        /* Mobile-First/Base Styles: Everything sits naturally resting and visible */
         .image-layer {
           transition:
             transform 0.7s cubic-bezier(0.22,1,0.36,1),
             filter 0.6s ease;
         }
 
-        .cozy-card:hover .image-layer {
-          transform: scale(1.08);
-          filter: saturate(1.1);
-        }
-
         .tape {
           transition: transform 0.35s ease;
         }
 
-        .cozy-card:hover .tape {
-          transform:
-            translateX(-50%)
-            rotate(-2deg)
-            scale(1.04);
-        }
-
         .secret-note {
-          opacity: 0;
-          transform: translateY(8px);
           transition:
             opacity 0.35s ease,
             transform 0.35s ease;
-        }
-
-        .cozy-card:hover .secret-note {
-          opacity: 1;
-          transform: translateY(0);
         }
 
         .dust {
@@ -174,15 +182,17 @@ export default function CurrentlyCozy() {
       </div>
 
       {/* grid */}
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl w-full place-items-center">
+      {/* Changed layout gap to gap-12 on small displays to avoid vertical content crowding */}
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-4 max-w-6xl w-full place-items-center">
         {items.map((item) => (
           <div
             key={item.id}
             onMouseMove={(e) => {
+              // Quick bail check: don't track mouse coordinate skews on absolute touch interfaces
+              if (window.matchMedia("(hover: none)").matches) return;
+
               const card = e.currentTarget;
-
               const rect = card.getBoundingClientRect();
-
               const x = e.clientX - rect.left;
               const y = e.clientY - rect.top;
 
@@ -238,11 +248,6 @@ export default function CurrentlyCozy() {
                 <p className="text-sm text-[#a18472] italic">"{item.note}"</p>
               </div>
             </div>
-
-            {/* tape */}
-            {/* <div
-              className={`tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-7 bg-amber-100/90 border border-[#e8dfd1] shadow-sm ${item.tapeRotation}`}
-            /> */}
           </div>
         ))}
 
@@ -296,8 +301,6 @@ export default function CurrentlyCozy() {
               </p>
             </div>
           </div>
-
-          {/* <div className="tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-7 bg-amber-100 border border-[#e8dfd1] shadow-sm rotate-[3deg]" /> */}
         </div>
       </div>
     </section>

@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-// Importing sleek, structural icons from lucide-react
 import { Cpu, Ship, Home } from "lucide-react";
+
 const STORY_CARDS = [
   {
     eyebrow: "By day",
@@ -28,27 +28,26 @@ const STORY_CARDS = [
   },
 ];
 
-// Pure design-system tokens: identical layout structures, differing strictly by color profiles
 const CURSOR_THEMES = [
   {
-    background: "#18181b", // Dark tactical charcoal
+    background: "#18181b",
     border: "1px solid rgba(255, 255, 255, 0.08)",
     textColor: "#f4f4f5",
-    iconColor: "#34d399", // Emerald accent
+    iconColor: "#34d399",
     iconBg: "rgba(52, 211, 153, 0.12)",
   },
   {
-    background: "#ffffff", // Crisp canvas white
+    background: "#ffffff",
     border: "1px solid #e4e4e7",
     textColor: "#18181b",
-    iconColor: "#3b82f6", // Indigo/Blue accent
+    iconColor: "#3b82f6",
     iconBg: "rgba(59, 130, 246, 0.1)",
   },
   {
-    background: "#2c2420", // Deep espresso-umber
+    background: "#2c2420",
     border: "1px solid rgba(255, 255, 255, 0.05)",
     textColor: "#faf8f4",
-    iconColor: "#b07d5c", // Warm earth clay accent
+    iconColor: "#b07d5c",
     iconBg: "rgba(176, 125, 92, 0.18)",
   },
 ];
@@ -80,7 +79,6 @@ export default function StorySection() {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(() => {
         if (floatingRef.current) {
-          // Precise geometric spacing away from native cursor pointer
           floatingRef.current.style.transform = `translate3d(${mousePos.current.x + 22}px, ${mousePos.current.y + 22}px, 0)`;
         }
       });
@@ -94,7 +92,6 @@ export default function StorySection() {
   }, []);
 
   const hasHover = hoveredIndex !== null;
-  // Fallback cleanly to standard theme settings when not active
   const activeTheme = hasHover ? CURSOR_THEMES[hoveredIndex] : CURSOR_THEMES[0];
 
   return (
@@ -104,9 +101,39 @@ export default function StorySection() {
       style={{ background: "#faf8f4", borderRadius: "1rem" }}
     >
       <style>{`
-        .story-cards-wrapper {
-          cursor: none;
+        /* Desktop-only fine tuning styles wrapped into a proper media block */
+        @media (hover: hover) {
+          .story-cards-wrapper {
+            cursor: none;
+          }
+          .story-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 60px rgba(44, 36, 32, 0.08), 0 10px 24px rgba(44, 36, 32, 0.04);
+            border-color: #e0d4c5;
+          }
+          .story-card:hover::before {
+            opacity: 1;
+          }
+          .story-card:hover .story-image {
+            transform: scale(1.04);
+            filter: saturate(1.02) brightness(1.01);
+          }
+          .story-card:hover .floating-glow {
+            opacity: 1;
+          }
+          
+          /* Hide notes by default exclusively on desktop pointers */
+          .hover-note {
+            opacity: 0;
+            transform: translateY(6px);
+          }
+          .story-card:hover .hover-note {
+            opacity: 1;
+            transform: translateY(0px);
+          }
         }
+
+        /* Mobile-First Baseline Layout Standards */
         .story-card {
           position: relative;
           overflow: hidden;
@@ -123,29 +150,11 @@ export default function StorySection() {
           pointer-events: none;
           z-index: 2;
         }
-        .story-card:hover {
-          transform: translateY(-8px) scale(1.01);
-          box-shadow: 0 30px 60px rgba(44, 36, 32, 0.08), 0 10px 24px rgba(44, 36, 32, 0.04);
-          border-color: #e0d4c5;
-        }
-        .story-card:hover::before {
-          opacity: 1;
-        }
         .story-image {
           transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
         }
-        .story-card:hover .story-image {
-          transform: scale(1.04);
-          filter: saturate(1.02) brightness(1.01);
-        }
         .hover-note {
-          opacity: 0;
-          transform: translateY(6px);
           transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .story-card:hover .hover-note {
-          opacity: 1;
-          transform: translateY(0px);
         }
         .floating-glow {
           position: absolute;
@@ -158,9 +167,6 @@ export default function StorySection() {
           opacity: 0;
           transition: opacity 0.5s ease;
           pointer-events: none;
-        }
-        .story-card:hover .floating-glow {
-          opacity: 1;
         }
         .cursor-box {
           position: fixed;
@@ -199,12 +205,12 @@ export default function StorySection() {
         }
       `}</style>
 
-      {/* Structured Minimal Context Cursor */}
+      {/* Styled Portal Cursor System — Completely hidden on mobile screens */}
       {mounted && typeof document !== "undefined"
         ? createPortal(
             <div
               ref={floatingRef}
-              className="cursor-box"
+              className="cursor-box hidden md:block"
               style={{
                 opacity: hasHover ? 1 : 0,
                 transition: "opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
@@ -220,7 +226,6 @@ export default function StorySection() {
                     "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease",
                 }}
               >
-                {/* Fixed-width Icon Container Housing Lucide Indicators */}
                 <div
                   className="icon-container"
                   style={{ background: activeTheme.iconBg }}
@@ -248,7 +253,6 @@ export default function StorySection() {
                   )}
                 </div>
 
-                {/* Highly structured, clean modern type */}
                 <span
                   className="cursor-label"
                   style={{
@@ -286,18 +290,22 @@ export default function StorySection() {
         </h2>
       </div>
 
-      {/* Cards */}
-      <div className="story-cards-wrapper grid items-start gap-6 md:grid-cols-3">
+      {/* Cards Grid */}
+      {/* Optimized responsive margin structure: uses standard clean layouts on mobile, steps into your staggered look via md: prefix */}
+      <div className="story-cards-wrapper grid items-start gap-10 md:gap-6 md:grid-cols-3">
         {STORY_CARDS.map((card, index) => (
           <article
             key={card.title}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            className="story-card relative flex flex-col rounded-xl"
+            className={`
+              story-card relative flex flex-col rounded-xl
+              ${index === 1 ? "md:mt-6" : ""}
+              ${index === 2 ? "md:-mt-2" : ""}
+            `}
             style={{
               background: "#fffdf9",
               border: "1px solid #ede8df",
-              marginTop: index === 1 ? "1.5rem" : index === 2 ? "-0.5rem" : "0",
             }}
           >
             <div className="floating-glow" />

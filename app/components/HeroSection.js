@@ -150,7 +150,7 @@ export default function HeroSection() {
         <FloatingCard
           image="https://i.pinimg.com/736x/24/2c/1a/242c1a960184aff25b7d367399b24294.jpg"
           initialX="-2%"
-          initialY="10%"
+          initialY="12%"
           rotateDeg={10}
           label="now playing"
         >
